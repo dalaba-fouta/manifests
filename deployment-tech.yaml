@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment-tech
+  labels:
+    app: nginx-deployment-tech
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx-deployment-tech
+  template:
+    metadata:
+      labels:
+        app: nginx-deployment-tech
+    spec:
+      containers:
+      - name: container-boutique-accessoire
+        image: dddiallo/web-boutique
+        ports:
+        - containerPort: 80

@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment-voyage
+  labels:
+    app: nginx-deployment-voyage
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx-deployment-voyage
+  template:
+    metadata:
+      labels:
+        app: nginx-deployment-voyage
+    spec:
+      containers:
+      - name: container-boutique-voyage
+        image: dddiallo/page-web
+        ports:
+        - containerPort: 80
