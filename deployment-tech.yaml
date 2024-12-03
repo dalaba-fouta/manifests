@@ -17,6 +17,7 @@ spec:
     spec:
       containers:
       - name: container-boutique-accessoire
-        image: dddiallo/web-boutique
+        #image: dddiallo/web-boutique
+        image: dddiallo/projet-restaurant:v2 
         ports:
         - containerPort: 80
