@@ -10,7 +10,7 @@ spec:
   tls:
     - hosts:
         - monsite.blog
-        - exemple.info
+        # - exemple.info
       secretName: mon-tls-secret
   rules:
   - host: "monsite.blog"
@@ -23,15 +23,15 @@ spec:
               name: site-tech
               port:
                 number: 80
-  - host: "exemple.info"
-    http:
-      paths:
-        - path: /
-          pathType: Prefix
-          backend:
-            service:
-              name: site-voyage
-              port:
-                number: 80
+  # - host: "exemple.info"
+  #   http:
+  #     paths:
+  #       - path: /
+  #         pathType: Prefix
+  #         backend:
+  #           service:
+  #             name: site-voyage
+  #             port:
+  #               number: 80
 
 
