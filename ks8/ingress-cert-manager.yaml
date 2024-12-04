@@ -1,0 +1,65 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: routeur-ingress
+  namespace: default
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt
+    nginx.ingress.kubernetes.io/custom-http-errors: "503"
+    nginx.ingress.kubernetes.io/custom-error-pages: "/503.html"
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - monsite.blog
+        # - exemple.info
+      secretName: mon-tls-secret
+  rules:
+  - host: "monsite.blog"
+    http:
+      paths:
+        - path: / 
+          pathType: Prefix
+          backend:
+            service:
+              name: site-tech
+              port:
+                number: 80
+  # - host: "exemple.info"
+  #   http:
+  #     paths:
+  #       - path: /
+  #         pathType: Prefix
+  #         backend:
+  #           service:
+  #             name: site-voyage
+  #             port:
+  #               number: 80
+
+
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: routeur-ingress
+#   namespace: default
+#   annotations:
+#     cert-manager.io/cluster-issuer: letsencrypt
+#     nginx.ingress.kubernetes.io/custom-http-errors: "503"
+#     nginx.ingress.kubernetes.io/custom-error-pages: "/503.html"
+# spec:
+#   ingressClassName: nginx
+#   tls:
+#     - hosts:
+#         - monsite.blog
+#       secretName: mon-tls-secret
+#   rules:
+#   - host: "monsite.blog"
+#     http:
+#       paths:
+#         - path: / 
+#           pathType: Prefix
+#           backend:
+#             service:
+#               name: site-tech
+#               port:
+#                 number: 80
