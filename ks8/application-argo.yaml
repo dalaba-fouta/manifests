@@ -7,8 +7,12 @@ spec:
   project: default
   source:
     path: ks8
-    repoURL: 'https://github.com/kubernetes-sigs/kustomize'
+    repoURL: 'https://github.com/dalaba-fouta/manifests'
     targetRevision: HEAD
   destination:
     namespace: default
     server: 'https://kubernetes.default.svc'
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
